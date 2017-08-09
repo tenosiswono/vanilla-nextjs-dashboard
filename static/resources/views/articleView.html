@@ -1,0 +1,91 @@
+<section id="section-content-banner">
+  <div class="container-fluid fit1024">
+  	<div class="">
+  		<img class="img-responsive" ng-src="{{vm.article.image}}" alt="Xcidic Banner Blog" />
+  	</div>
+  </div>
+</section>
+<section id="section-content-view">
+  <div class="container-fluid fit1024">
+    <div class="row">
+    	<div class="blogs">
+  			<div class="article-content">
+  				<p class="date">{{vm.article.author}} - {{vm.article.date}}, {{vm.article.time}} </p>
+  				<h2>{{vm.article.title}}</h2>
+  				<div class="content" ng-bind-html="vm.renderHtml(vm.article.detail)"></div>
+          <div class="row">
+            <div class="col-md-6">
+              <a class="btn btn-warning previous-button" href="" onclick="window.history.back()"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i> Back to Articles</a>
+            </div>
+            <div class="col-md-6" hidden>
+              <div class="social-share">
+                <a class="btn btn-raised btn-sm whatsapp" socialshare socialshare-provider="whatsapp" socialshare-text="{{vm.article.title}}" socialshare-url="http://project-xcidicblog.bitballoon.com{{vm.urlLink}}">
+                   <i class="fa fa-whatsapp"></i><span> Share</span>
+                 </a>
+                 <button class="btn btn-raised btn-sm" socialshare socialshare-provider="facebook"  socialshare-url="http://project-xcidicblog.bitballoon.com{{vm.urlLink}}" socialshare-quote="{{vm.article.title}}  ">
+                    <i class="fa fa-facebook"></i><span> Share</span>
+                  </button>
+                 <a class="btn btn-raised btn-sm" socialshare socialshare socialshare-provider="twitter" socialshare-text="{{vm.article.title}}" socialshare-hashtags="Xcidic" socialshare-url="http://project-xcidicblog.bitballoon.com{{vm.urlLink}}">
+                  <i class="fa fa-twitter"></i><span> Share</span>
+                </a>
+                 <button class="btn btn-raised btn-sm" socialshare socialshare-provider="linkedin" socialshare-text="{{vm.article.title}}" socialshare-description="{{ vm.article.detail | htmlToText | limitTo : 251 }}..." socialshare-url="http://project-xcidicblog.netlify.com{{vm.urlLink}}">
+                   <i class="fa fa-linkedin"></i><span> Share</span>
+                 </button>
+               </div>
+            </div>
+          </div>
+  			</div>
+        <div class="subscribe">
+          <div class="row">
+            <button class="btn btn-raised btn-sm btn-warning" data-toggle="modal" data-target="#careerModal" type="button">SUBSCRIBE TO OUR NEWSLETTER</button>
+          </div>
+        </div>
+    	</div>
+    </div>
+  </div>
+</section>
+<div id="careerModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <form name="myForm">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Subscribe newsletter</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group label-floating" ng-class="{'has-error': myForm.fullName.$dirty && myForm.fullName.$invalid}">
+            <label class="control-label" for="fullName">Full Name</label>
+            <input class="form-control" name="fullName" id="fullName" ng-model="fullName" type="text" required>
+          </div>
+          <div class="form-group label-floating" ng-class="{'has-error': myForm.company.$dirty && myForm.company.$invalid}">
+            <label class="control-label">Company/Organization</label>
+            <input class="form-control" ng-model="company" type="text" required>
+          </div>
+          <div class="form-group" ng-class="{'has-error': myForm.hearXcidic.$dirty && myForm.hearXcidic.$invalid}">
+            <select id="select111" class="form-control" ng-model="hearXcidic" required>
+              <option value="">Where do you hear about Xcidic?</option>
+              <option value="Search">Search</option>
+              <option value="Social Media">Social Media</option>
+              <option value="Friends and Colleague">Friends and Colleague</option>
+              <option value="Others">Others</option>
+            </select>
+          </div>
+          <div class="form-group label-floating" ng-class="{'has-error': myForm.emailInput.$dirty && myForm.emailInput.$invalid}">
+            <label class="control-label">Email</label>
+            <input class="form-control" ng-model="emailInput" type="email" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-raised btn-warning" data-dismiss="modal" ng-disabled="myForm.$invalid">Send</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function() {
+   $.material.init();
+  });
+</script>

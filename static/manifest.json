@@ -1,0 +1,17 @@
+{
+  "name": "Xcidic Blog - An Innovative Technology Lab",
+  "short_name": "Xcidic Blog",
+  "icons": [
+    {
+      "src": "/static/resources/images/192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "density": 4.0
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ed7622",
+  "theme_color": "#ed7622"
+}

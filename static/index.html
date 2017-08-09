@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="xcidicApp">
+<head>
+  <!--
+  '%gg,                                                                          
+  "$$$@@gg,             ,,gggC      mg,     ,gm                 @@             @@   @K
+    %$$$$$$$$k    ,@@@@@@@@@'        %@g   g@P       ,ggg,,             ,ggg,  @@           ,ggg,
+     "$$$$$$$$$  g@@@@@@@@P           "@@,@@`     ,@@P""""N@@   @@   ,@@P"""*%@@@   @F   g@@*"""*%@g
+       1$$$$$$$  $$@@@@@@"              $@@      ]@P            @@   @@       "@@   @F  #@"
+         %$$$$$  $$$%@@@               @@M@@     $@             @@  ]@L        @@   @F  $@
+          @$$$$  $$$$&P              g@@   %@g   '$@,      ,g   @@   %@g      g@F   @F  ]@N       g,
+        ,@@@$$$  $$$$$$w            g@F     F@@    "N@@g@@@N`   @@    "%@@@@@@P`    @F    *B@@g@@@M
+       g@@@@@@$  $$$$$$$@
+      @@@@@@@@@  %$$$$$$$$g        gggw   gggg,  gggg,  ggggg ggggg     gggggp ggggp  ,gg   gg    gg
+    ,@@@@@@@@P    "$$$$$$$$@,     @P  "* @P   @P @   $@ @     $@  $@      @P   @      @P@   @R@  @B@
+   '""``             '"M&$$$$k    @P     @P   @P @   $@ @"""  $@""Bg      @P   @"""  @@,$@  @P]P]P]@
+                           '"M&w  "Bgg@C  Bgg@P  @Wg@P  @@ggg $@   @      @P   @gggw @   $@ @P $@ ]@
+  -->
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <base href="/">
+  <title>Xcidic Blog - An Innovative Technology Lab</title>
+  <meta content="Xcidic is a fast growing startup based in Singapore with a focus on re-defining web development, web design, and e-commerce. We love data and care deeply about creative design at the front-end as well as the beautiful coding at the back." name="description">
+  <meta content="web developer, web development, web developers, ecommerce website design, web development company, ecommerce website development, web programming, good website design, cool website designs, creative web design, web design software, web design services, design company, responsive web design, ecommerce design, web designing and programming, web development company, web development services" name="keywords">
+  <meta content="Michael Zhang" name="designer">
+  <meta content="Muhammad Al Anis Faishal" name="coder">
+  <link href="favicon.png" rel="shortcut icon" type="image/x-icon">
+  <link href="resources/images/192x192.png" rel="icon" sizes="192x192"> 
+
+  <meta content="yes" name="mobile-web-app-capable">
+  <meta content="#76AD2B" name="theme-color">
+  <meta content="Xcidic" name="apple-mobile-web-app-title">
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta content="#76AD2B" name="msapplication-navbutton-color">
+  <link href="manifest.json" rel="manifest">
+
+  <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/css/bootstrap-material-design.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/css/ripples.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700" rel="stylesheet">
+  <link href="resources/css/xcidic-blog.css" rel="stylesheet" type="text/css">
+  <link href="resources/css/xcidic-responsive.css" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+  </script>
+</head>
+<body>
+  <div id="pre-loader">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+  </div>
+  <section>
+    <div ui-view="header" id="section-header"></div>  
+    <div ui-view="content"></div>
+    <div ui-view="footer"></div>
+  </section>
+  <script crossorigin="anonymous" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script> 
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular-touch.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/js/material.min.js">
+  </script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/js/ripples.min.js">
+  </script> 
+  <script src="resources/js/socialshare/angular-socialshare.js"></script>
+  <script src="resources/js/xcidic-blog.js" type="text/javascript">
+  </script>
+  <script src="resources/js/controllers/header.controller.js"></script>
+  <script src="resources/js/controllers/home.controller.js"></script>
+  <script src="resources/js/controllers/article.controller.js"></script>
+  <script src="resources/js/services/article.service.js"></script>
+</body>
+</html>
