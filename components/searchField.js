@@ -25,6 +25,15 @@ const styleSheet = createStyleSheet('AppSearch', theme => ({
       },
     },
   },
+  wrapperFixed: {
+    fontFamily: theme.typography.fontFamily,
+    position: 'relative',
+    borderRadius: 2,
+    background: fade(theme.palette.common.black, 0.15),
+    '&:hover': {
+      background: fade(theme.palette.common.black, 0.25),
+    },
+  },
   search: {
     width: theme.spacing.unit * 9,
     height: '100%',
@@ -53,10 +62,10 @@ const styleSheet = createStyleSheet('AppSearch', theme => ({
 }));
 
 function AppSearch(props) {
-  const { classes, width } = props;
+  const { classes, width, fixed } = props;
 
   return (
-    <div className={classes.wrapper}>
+    <div className={ fixed ? classes.wrapperFixed : classes.wrapper }>
       <div className={classes.search}>
         <Search />
       </div>
@@ -68,6 +77,7 @@ function AppSearch(props) {
 AppSearch.propTypes = {
   classes: PropTypes.object.isRequired,
   width: PropTypes.string.isRequired,
+  fixed: PropTypes.boolean,
 };
 
 export default compose(pure, withStyles(styleSheet), withWidth())(AppSearch);

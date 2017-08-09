@@ -26,6 +26,10 @@ import Collapse from 'material-ui/transitions/Collapse';
 import Badge from 'material-ui/Badge';
 import SearchField from '../components/searchField';
 import Menu, { MenuItem } from 'material-ui/Menu';
+import SearchIcon from 'material-ui-icons/Search';
+import ArrowBackIcon from 'material-ui-icons/ArrowBack';
+import Dialog from 'material-ui/Dialog';
+import Fade from 'material-ui/transitions/Fade';
 
 const styleSheet = createStyleSheet('Frame', theme => ({
   root: {
@@ -93,6 +97,9 @@ const styleSheet = createStyleSheet('Frame', theme => ({
   subItem: {
     textIndent: 24,
   },
+  navHidden: {
+    width: 0,
+  },
 }));
 
 /* eslint-disable react/react-in-jsx-scope */
@@ -104,6 +111,7 @@ class Frame extends Component {
       userMenuOpen: false,
       notificationOpen: false,
       anchorEl: undefined,
+      searchDialogOpen: false,
     };
     this.toggleDrawer = this.toggleDrawer.bind(this);
   }
@@ -130,15 +138,25 @@ class Frame extends Component {
     this.setState({ notificationOpen: true, anchorEl: event.currentTarget });
   }
 
+  handleSearchDialogRequestClose = () => {
+    this.setState({ searchDialogOpen: false });
+  };
+
+  handleSearchDialogOpen = () => {
+    this.setState({ searchDialogOpen: true });
+  };
+
   render() {
     const { children, width } = this.props;
     const classes = this.props.classes;
 
     let drawerDocked = isWidthUp('md', width);
     let appBarClassName = classes.appBar;
+    let drawerClassName =  classes.navHidden;
 
     if (this.state.open) {
       appBarClassName += ` ${classes.appBarShift}`;
+      drawerClassName = classes.drawer;
     }
 
     const navigationList = (
@@ -194,7 +212,29 @@ class Frame extends Component {
             <Typography type="title" color="inherit" className={classes.flex}>
               Project Vanilla
             </Typography>
-            <SearchField />
+            <Hidden smDown>
+              <SearchField />
+            </Hidden>
+            <Hidden smUp>
+              <IconButton color="default" aria-label="Search" onClick={this.handleSearchDialogOpen}>
+                <SearchIcon />
+              </IconButton>
+            </Hidden>
+            <Dialog
+              fullScreen
+              open={this.state.searchDialogOpen}
+              onRequestClose={this.handleSearchDialogRequestClose}
+              transition={<Fade />}
+            >
+              <AppBar color="default">
+                <Toolbar className={classes.appBarLogo}>
+                  <IconButton onClick={this.handleSearchDialogRequestClose} aria-label="Close">
+                    <ArrowBackIcon />
+                  </IconButton>
+                  <SearchField fixed />
+                </Toolbar>
+              </AppBar>
+            </Dialog>
             <IconButton color="default" aria-label="Notification" className={classes.notificationIcon}  onClick={this.handleNotificationOpen}>
               <Badge badgeContent={4} color="primary">
                 <NotificationsIcon />
@@ -230,7 +270,7 @@ class Frame extends Component {
           open={this.state.open}
           onRequestClose={this.toggleDrawer}
           docked={drawerDocked}
-          className={classes.drawer}
+          className={drawerClassName}
         >
           {navigationList}
         </Drawer>
