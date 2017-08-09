@@ -33,6 +33,9 @@ const styleSheet = createStyleSheet('AppSearch', theme => ({
     '&:hover': {
       background: fade(theme.palette.common.black, 0.25),
     },
+    '& $input': {
+      width: 'calc(100% - 100px)',
+    },
   },
   search: {
     width: theme.spacing.unit * 9,

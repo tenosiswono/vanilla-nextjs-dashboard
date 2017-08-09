@@ -21,11 +21,13 @@ const styleSheet = createStyleSheet('Index', theme => ({
     width: '100%',
     minHeight: 'calc(100vh - 131px)',
     margin: 0,
-    background: 'linear-gradient(0deg, #fff 75%, #eee 25%)',
   },
   heading: {
     padding: '112px 32px 32px 32px',
-    color: '#fff'
+    color: '#fff',
+    background: '#eee',
+    marginBottom: '-100px',
+    height: '150px',
   },
   cardsDiv: {
     padding: '0 10vh',
