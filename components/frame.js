@@ -33,8 +33,6 @@ import Fade from 'material-ui/transitions/Fade';
 
 const styleSheet = createStyleSheet('Frame', theme => ({
   root: {
-    display: 'flex',
-    alignItems: 'stretch',
     minHeight: '100vh',
     paddingBottom: 64,
     width: '100%',
@@ -42,11 +40,6 @@ const styleSheet = createStyleSheet('Frame', theme => ({
   appBar: {
     background: '#fafafa',
     position: 'fixed',
-  },
-  [theme.breakpoints.up('md')]: {
-    appBarShift: {
-      width: 'calc(100% - 250px)',
-    },
   },
   appBarLogo: {
     padding: 0,
@@ -104,6 +97,18 @@ const styleSheet = createStyleSheet('Frame', theme => ({
   navHidden: {
     width: 0,
   },
+  children: {
+    margin: 0,
+    padding: 0,
+  },
+  [theme.breakpoints.up('md')]: {
+    appBarShift: {
+      width: 'calc(100% - 250px)',
+    },
+    childrenShift: {
+      paddingLeft: '250px',
+    },
+  },
 }));
 
 /* eslint-disable react/react-in-jsx-scope */
@@ -157,10 +162,12 @@ class Frame extends Component {
     let drawerDocked = isWidthUp('md', width);
     let appBarClassName = classes.appBar;
     let drawerClassName =  classes.navHidden;
+    let childrenClassName =  classes.children;
 
     if (this.state.open) {
       appBarClassName += ` ${classes.appBarShift}`;
       drawerClassName = classes.drawer;
+      childrenClassName += ` ${classes.childrenShift}`;
     }
 
     const navigationList = (
@@ -279,7 +286,9 @@ class Frame extends Component {
         >
           {navigationList}
         </Drawer>
-        {children}
+        <div className={childrenClassName}>
+          {children}
+        </div>
       </div>
     );
   }

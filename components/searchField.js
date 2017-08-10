@@ -80,7 +80,7 @@ function AppSearch(props) {
 AppSearch.propTypes = {
   classes: PropTypes.object.isRequired,
   width: PropTypes.string.isRequired,
-  fixed: PropTypes.boolean,
+  fixed: PropTypes.bool,
 };
 
 export default compose(pure, withStyles(styleSheet), withWidth())(AppSearch);

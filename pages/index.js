@@ -35,7 +35,7 @@ const styleSheet = createStyleSheet('Index', theme => ({
     height: '150px',
   },
   cardsDiv: {
-    padding: '0 10vh',
+    padding: '0 3vw',
     width: 'calc(100% + 8px)',
   },
   card: {
@@ -55,9 +55,9 @@ const styleSheet = createStyleSheet('Index', theme => ({
   },
   [theme.breakpoints.down('sm')]: {
     cardsDiv: {
+      margin: '0 0 0 -2px',
       padding: '0',
-      margin: '0 0 0 -4px',
-      width: 'calc(100% + 8px)',
+      width: 'calc(100% + 2px)',
     },
   },
 }));
@@ -85,49 +85,40 @@ class Index extends Component {
               </Typography>
             </div>
             <Grid container className={` ${classes.cardsDiv}`}>
-              <Grid item xs={12} sm={4}>
+              <Grid item xs={12} sm={12} md={4}>
                 <Card className={classes.card}>
                   <CardContent>
-                    <Typography type="headline" className={classes.title}>
+                    <Typography type="title" className={classes.title}>
                       Line Chart
                     </Typography>
                     <LineChart />
                   </CardContent>
-                  <CardActions>
-                    <Button dense>Learn More</Button>
-                  </CardActions>
                 </Card>
               </Grid>
-              <Grid item xs={12} sm={4}>
+              <Grid item xs={12} sm={12} md={4}>
                 <Card className={classes.card}>
                   <CardContent>
-                    <Typography type="headline" className={classes.title}>
+                    <Typography type="title" className={classes.title}>
                       Pie Chart
                     </Typography>
                     <PieChart />
                   </CardContent>
-                  <CardActions>
-                    <Button dense>Learn More</Button>
-                  </CardActions>
                 </Card>
               </Grid>
-              <Grid item xs={12} sm={4}>
+              <Grid item xs={12} sm={12} md={4}>
                 <Card className={classes.card}>
                   <CardContent>
-                    <Typography type="headline" className={classes.title}>
+                    <Typography type="title" className={classes.title}>
                       Bar Chart
                     </Typography>
                     <BarChart />
                   </CardContent>
-                  <CardActions>
-                    <Button dense>Learn More</Button>
-                  </CardActions>
                 </Card>
               </Grid>
               <Grid item xs={12} sm={12}>
                 <Card className={classes.card}>
                   <CardContent>
-                    <Typography type="headline" className={classes.title}>
+                    <Typography type="title" className={classes.title}>
                       Table
                     </Typography>
                     <TableExample />
