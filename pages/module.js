@@ -12,12 +12,9 @@ import Typography from 'material-ui/Typography';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 
-import PieChart from '../components/pie';
-import LineChart from '../components/line';
-import BarChart from '../components/bar';
 import TableExample from '../components/table';
 
-const styleSheet = createStyleSheet('Index', theme => ({
+const styleSheet = createStyleSheet('Module', theme => ({
   root: {
     marginTop: 0,
     width: '100%',
@@ -46,48 +43,18 @@ const styleSheet = createStyleSheet('Index', theme => ({
 }));
 
 /* eslint-disable react/react-in-jsx-scope */
-class Index extends Component {
+class Module extends Component {
   render() {
     const classes = this.props.classes;
     return (
       <div className={classes.root}>
         <Head>
-          <title>Project Vanilla</title>
+          <title>Project Vanilla - Module</title>
           <meta content="Project Vanilla Dashboard" name="description" />
           <meta content="web developer, web development, web developers, ecommerce website design, web development company, ecommerce website development, web programming, good website design, cool website designs, creative web design, web design software, web design services, design company, responsive web design, ecommerce design, web designing and programming, web development company, web development services" name="keywords" />
         </Head>
-        <Frame title="Dashboard" description="Dashboard and information for informed user">
+        <Frame title="Module" description="Module view for maintain and performing create read update operation">
           <Grid container className={` ${classes.cardsDiv}`}>
-            <Grid item xs={12} sm={12} md={4}>
-              <Card className={classes.card}>
-                <CardContent>
-                  <Typography type="title" className={classes.title}>
-                    Line Chart
-                  </Typography>
-                  <LineChart />
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={12} sm={12} md={4}>
-              <Card className={classes.card}>
-                <CardContent>
-                  <Typography type="title" className={classes.title}>
-                    Pie Chart
-                  </Typography>
-                  <PieChart />
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={12} sm={12} md={4}>
-              <Card className={classes.card}>
-                <CardContent>
-                  <Typography type="title" className={classes.title}>
-                    Bar Chart
-                  </Typography>
-                  <BarChart />
-                </CardContent>
-              </Card>
-            </Grid>
             <Grid item xs={12} sm={12}>
               <Card className={classes.card}>
                 <CardContent>
@@ -105,7 +72,7 @@ class Index extends Component {
   }
 }
 
-Index.propTypes = {
+Module.propTypes = {
   classes: PropTypes.object.isRequired,
 }
-export default layout(withStyles(styleSheet)(Index));
+export default layout(withStyles(styleSheet)(Module));

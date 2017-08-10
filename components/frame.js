@@ -34,7 +34,6 @@ import Fade from 'material-ui/transitions/Fade';
 const styleSheet = createStyleSheet('Frame', theme => ({
   root: {
     minHeight: '100vh',
-    paddingBottom: 64,
     width: '100%',
   },
   appBar: {
@@ -99,7 +98,19 @@ const styleSheet = createStyleSheet('Frame', theme => ({
   },
   children: {
     margin: 0,
-    padding: 0,
+    paddingBottom: 32,
+  },
+  container: {
+    width: '100%',
+    minHeight: 'calc(100vh - 131px)',
+    margin: 0,
+  },
+  heading: {
+    padding: '112px 32px 32px 32px',
+    color: '#fff',
+    background: '#eee',
+    marginBottom: '-100px',
+    height: '150px',
   },
   [theme.breakpoints.up('md')]: {
     appBarShift: {
@@ -157,7 +168,7 @@ class Frame extends Component {
   };
 
   render() {
-    const { children, width } = this.props;
+    const { children, width, title, description } = this.props;
     const classes = this.props.classes;
 
     let drawerDocked = isWidthUp('md', width);
@@ -196,9 +207,11 @@ class Frame extends Component {
                 <ListItem button className={classes.subItem}>
                   <ListItemText primary="Setting" />
                 </ListItem>
-                <ListItem button className={classes.subItem}>
-                  <ListItemText primary="Sign out" />
-                </ListItem>
+                <Link href="/sign-in">
+                  <ListItem button className={classes.subItem}>
+                    <ListItemText primary="Sign out" />
+                  </ListItem>
+                </Link>
               </div>
             </Collapse>
           </Grid>
@@ -208,6 +221,20 @@ class Frame extends Component {
           <Link href="/">
             <ListItem button>
               <ListItemText primary="Dashboard" />
+            </ListItem>
+          </Link>
+        </div>
+        <div onClick={this.toggleClick}>
+          <Link href="/module">
+            <ListItem button>
+              <ListItemText primary="Module" />
+            </ListItem>
+          </Link>
+        </div>
+        <div onClick={this.toggleClick}>
+          <Link href="/secured">
+            <ListItem button>
+              <ListItemText primary="Secured" />
             </ListItem>
           </Link>
         </div>
@@ -288,7 +315,17 @@ class Frame extends Component {
           {navigationList}
         </Drawer>
         <div className={childrenClassName}>
-          {children}
+          <div className={classes.container}>
+            <div className={classes.heading}>
+              <Typography type="title" gutterBottom>
+                {title}
+              </Typography>
+              <Typography type="subheading" gutterBottom>
+                {description}
+              </Typography>
+            </div>
+            {children}
+          </div>
         </div>
       </div>
     );
@@ -297,5 +334,7 @@ class Frame extends Component {
 
 Frame.propTypes = {
   children: PropTypes.node.isRequired,
+  title: PropTypes.string,
+  description: PropTypes.string,
 };
 export default compose(withStyles(styleSheet), withWidth())(Frame);
