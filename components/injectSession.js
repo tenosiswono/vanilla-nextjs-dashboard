@@ -18,13 +18,6 @@ const getSessionFromLocalStorage = () => {
 
 const injectSession = Page => {
   return class InjectSession extends React.Component {
-    constructor (props) {
-      super(props)
-      // As the session changes we need a spot to store in a way that updates
-      // children components
-      this.state = {}
-    }
-
     static getInitialProps (context) {
       // Get the page's own initial props
       const initialProps = Page.getInitialProps ? Page.getInitialProps(context) : {}
@@ -37,6 +30,14 @@ const injectSession = Page => {
 
       // Inject any initial props and session
       return { ...initialProps, session }
+    }
+    
+    constructor (props) {
+      super(props)
+      console.log(props);
+      // As the session changes we need a spot to store in a way that updates
+      // children components
+      this.state = {}
     }
 
     render () {

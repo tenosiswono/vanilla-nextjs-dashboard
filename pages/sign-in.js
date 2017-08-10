@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import Head from 'next/head';
+import Cookie from 'js-cookie';
 
 import PropTypes from 'prop-types';
 import Grid from 'material-ui/Grid';
@@ -13,6 +14,7 @@ import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
 import Link from 'next/link';
+import Router from 'next/router';
 
 
 const styleSheet = createStyleSheet('Module', theme => ({
@@ -48,6 +50,24 @@ const styleSheet = createStyleSheet('Module', theme => ({
 
 /* eslint-disable react/react-in-jsx-scope */
 class Module extends Component {
+  static getInitialProps ({ query }) {
+    return query
+      ? { next: query.next }
+      : { next: '/' }
+  }
+  
+  constructor(props) {
+    super(props);
+  }
+
+  submitLogin = () => {
+    const session = { token: "session" };
+    // Store the token for the benefit of client and server
+    window.localStorage.setItem('session', JSON.stringify(session));
+    Cookie.set('token', session.token, { secure: false });
+    Router.push(this.props.next || '/');
+  }
+
   render() {
     const classes = this.props.classes;
     return (
@@ -76,11 +96,9 @@ class Module extends Component {
               type="password"
               margin="normal"
             />
-            <Link href="/">
-              <Button color="primary" raised className={classes.button}>
-                Sign-in
-              </Button>
-            </Link>
+            <Button color="primary" raised className={classes.button} onClick={this.submitLogin}>
+              Sign-in
+            </Button>
           </CardContent>
         </Card>
       </div>

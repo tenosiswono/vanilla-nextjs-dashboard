@@ -207,7 +207,7 @@ class Frame extends Component {
                 <ListItem button className={classes.subItem}>
                   <ListItemText primary="Setting" />
                 </ListItem>
-                <Link href="/sign-in">
+                <Link href="/sign-out">
                   <ListItem button className={classes.subItem}>
                     <ListItemText primary="Sign out" />
                   </ListItem>

@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 
-const authenticationSecretKey = 'rahasia'
+const authenticationSecretKey = 'test';
 
 const extractSessionFromCookie = req => {
   const { cookie } = req.headers
@@ -24,8 +24,8 @@ const extractSessionFromCookie = req => {
         // Decode the token and return it
         let session
         try {
-          session = jwt.verify(token, authenticationSecretKey)
-          return session
+          //session = jwt.verify(token, authenticationSecretKey)
+          return token
         } catch (error) {
           console.error(error)
         }

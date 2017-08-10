@@ -76,4 +76,4 @@ class Module extends Component {
 Module.propTypes = {
   classes: PropTypes.object.isRequired,
 }
-export default layout(withStyles(styleSheet)(securePage(Module)));
+export default securePage(layout(withStyles(styleSheet)(Module)));

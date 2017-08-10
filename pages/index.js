@@ -89,14 +89,7 @@ class Index extends Component {
               </Card>
             </Grid>
             <Grid item xs={12} sm={12}>
-              <Card className={classes.card}>
-                <CardContent>
-                  <Typography type="title" className={classes.title}>
-                    Table
-                  </Typography>
-                  <TableExample />
-                </CardContent>
-              </Card>
+              <TableExample />
             </Grid>
           </Grid>
         </Frame>

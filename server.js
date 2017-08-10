@@ -3,6 +3,7 @@ const { join } = require('path');
 const { parse } = require('url');
 const next = require('next');
 const LRUCache = require('lru-cache');
+const extractSessionFromCookie = require('./modules/extractSessionFromCookie')
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
@@ -22,10 +23,18 @@ app.prepare()
   server.get('/', (req, res) => {
     renderAndCache(req, res, '/');
   });
+  
+  server.get('/sign-in', (req, res) => {
+    const actualPage = '/sign-in';
+    const queryParams = { next: req.query.next };
+    console.log(queryParams);
+    renderAndCache(req, res, actualPage, queryParams);
+  });
 
-  server.get('/article/:slug', (req, res) => {
-    const actualPage = '/article';
-    const queryParams = { slug: req.params.slug };
+  server.get('/secured', (req, res) => {
+    req.session = extractSessionFromCookie(req);
+    const actualPage = '/secured';
+    const queryParams = { next: req.query.next };
     renderAndCache(req, res, actualPage, queryParams);
   });
 

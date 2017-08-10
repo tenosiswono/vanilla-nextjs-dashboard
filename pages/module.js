@@ -59,11 +59,11 @@ class Module extends Component {
               <Card className={classes.card}>
                 <CardContent>
                   <Typography type="title" className={classes.title}>
-                    Table
+                    Search
                   </Typography>
-                  <TableExample />
                 </CardContent>
               </Card>
+              <TableExample />
             </Grid>
           </Grid>
         </Frame>

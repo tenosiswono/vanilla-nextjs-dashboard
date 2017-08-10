@@ -39,14 +39,17 @@ AppWrapper = withStyles(styleSheet)(AppWrapper);
 
 function layout(BaseComponent) {
   class Layout extends Component {
-    static async getInitialProps(ctx) {
-      if (BaseComponent.getInitialProps) {
-        return BaseComponent.getInitialProps(ctx);
-      }
-
-      return {};
+    
+    static getInitialProps (context) {
+      // If the page has a prop fetcher invoke it
+      return BaseComponent.getInitialProps ? BaseComponent.getInitialProps(context) : {}
     }
 
+    constructor (props) {
+      super(props)
+      console.log(props);
+    }
+    
     componentDidMount() {
       // Remove the server-side injected CSS.
       const jssStyles = document.querySelector('#jss-server-side');
@@ -79,7 +82,7 @@ function layout(BaseComponent) {
         <JssProvider registry={context.sheetsRegistry} jss={context.jss}>
           <MuiThemeProvider theme={context.theme} sheetsManager={context.sheetsManager}>
             <AppWrapper>
-              <BaseComponent />
+              <BaseComponent {...this.props} />
             </AppWrapper>
           </MuiThemeProvider>
         </JssProvider>
