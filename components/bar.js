@@ -21,7 +21,7 @@ export default React.createClass({
 
   render() {
     return (
-      <div>
+      <div style={{ position: 'relative' }}>
         <Bar
           data={data}
         />

@@ -70,8 +70,8 @@ class Index extends Component {
     return (
       <div className={classes.root}>
         <Head>
-          <title>Xcidic Blog - An Innovative Technology Lab</title>
-          <meta content="Xcidic is a fast growing startup based in Singapore with a focus on re-defining web development, web design, and e-commerce. We love data and care deeply about creative design at the front-end as well as the beautiful coding at the back." name="description" />
+          <title>Project Vanilla</title>
+          <meta content="Project Vanilla Dashboard" name="description" />
           <meta content="web developer, web development, web developers, ecommerce website design, web development company, ecommerce website development, web programming, good website design, cool website designs, creative web design, web design software, web design services, design company, responsive web design, ecommerce design, web designing and programming, web development company, web development services" name="keywords" />
         </Head>
         <Frame>

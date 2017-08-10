@@ -33,7 +33,7 @@ export default React.createClass({
 
   render() {
     return (
-      <div>
+      <div style={{ position: 'relative' }}>
         <Line data={data} />
       </div>
     );

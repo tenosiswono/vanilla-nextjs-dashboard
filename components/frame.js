@@ -106,7 +106,8 @@ const styleSheet = createStyleSheet('Frame', theme => ({
       width: 'calc(100% - 250px)',
     },
     childrenShift: {
-      paddingLeft: '250px',
+      marginLeft: '250px',
+      width: 'calc(100% - 250px)',
     },
   },
 }));
