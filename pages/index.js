@@ -12,6 +12,11 @@ import Typography from 'material-ui/Typography';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 
+import PieChart from '../components/pie';
+import LineChart from '../components/line';
+import BarChart from '../components/bar';
+import TableExample from '../components/table';
+
 const styleSheet = createStyleSheet('Index', theme => ({
   root: {
     marginTop: 0,
@@ -42,7 +47,6 @@ const styleSheet = createStyleSheet('Index', theme => ({
   },
   title: {
     marginBottom: 16,
-    fontSize: 14,
     color: theme.palette.text.secondary,
   },
   pos: {
@@ -84,19 +88,10 @@ class Index extends Component {
               <Grid item xs={12} sm={4}>
                 <Card className={classes.card}>
                   <CardContent>
-                    <Typography type="body1" className={classes.title}>
-                      Word of the Day
+                    <Typography type="headline" className={classes.title}>
+                      Line Chart
                     </Typography>
-                    <Typography type="headline" component="h2">
-                      be{bull}nev{bull}o{bull}lent
-                    </Typography>
-                    <Typography type="body1" className={classes.pos}>
-                      adjective
-                    </Typography>
-                    <Typography component="p">
-                      well meaning and kindly.<br />
-                      {'"a benevolent smile"'}
-                    </Typography>
+                    <LineChart />
                   </CardContent>
                   <CardActions>
                     <Button dense>Learn More</Button>
@@ -106,19 +101,10 @@ class Index extends Component {
               <Grid item xs={12} sm={4}>
                 <Card className={classes.card}>
                   <CardContent>
-                    <Typography type="body1" className={classes.title}>
-                      Word of the Day
+                    <Typography type="headline" className={classes.title}>
+                      Pie Chart
                     </Typography>
-                    <Typography type="headline" component="h2">
-                      be{bull}nev{bull}o{bull}lent
-                    </Typography>
-                    <Typography type="body1" className={classes.pos}>
-                      adjective
-                    </Typography>
-                    <Typography component="p">
-                      well meaning and kindly.<br />
-                      {'"a benevolent smile"'}
-                    </Typography>
+                    <PieChart />
                   </CardContent>
                   <CardActions>
                     <Button dense>Learn More</Button>
@@ -128,23 +114,24 @@ class Index extends Component {
               <Grid item xs={12} sm={4}>
                 <Card className={classes.card}>
                   <CardContent>
-                    <Typography type="body1" className={classes.title}>
-                      Word of the Day
+                    <Typography type="headline" className={classes.title}>
+                      Bar Chart
                     </Typography>
-                    <Typography type="headline" component="h2">
-                      be{bull}nev{bull}o{bull}lent
-                    </Typography>
-                    <Typography type="body1" className={classes.pos}>
-                      adjective
-                    </Typography>
-                    <Typography component="p">
-                      well meaning and kindly.<br />
-                      {'"a benevolent smile"'}
-                    </Typography>
+                    <BarChart />
                   </CardContent>
                   <CardActions>
                     <Button dense>Learn More</Button>
                   </CardActions>
+                </Card>
+              </Grid>
+              <Grid item xs={12} sm={12}>
+                <Card className={classes.card}>
+                  <CardContent>
+                    <Typography type="headline" className={classes.title}>
+                      Table
+                    </Typography>
+                    <TableExample />
+                  </CardContent>
                 </Card>
               </Grid>
             </Grid>

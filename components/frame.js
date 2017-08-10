@@ -36,6 +36,7 @@ const styleSheet = createStyleSheet('Frame', theme => ({
     display: 'flex',
     alignItems: 'stretch',
     minHeight: '100vh',
+    paddingBottom: 64,
     width: '100%',
   },
   appBar: {
@@ -90,6 +91,9 @@ const styleSheet = createStyleSheet('Frame', theme => ({
   },
   flex: {
     flex: 1,
+  },
+  menuNotification: {
+    width: 250,
   },
   notificationIcon: {
     marginRight: 16,
@@ -246,6 +250,7 @@ class Frame extends Component {
               onRequestClose={this.handleNotificationClose}
               anchorEl={this.state.anchorEl}
               onClick={this.handleNotificationClose}
+              className={classes.menuNotification}
             >
               <ListItem button>
                 <Avatar>A</Avatar>
