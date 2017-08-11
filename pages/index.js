@@ -30,7 +30,7 @@ const styleSheet = createStyleSheet('Index', theme => ({
   card: {
   },
   title: {
-    marginBottom: 16,
+    margin: '8px 8px 16px 8px',
     color: theme.palette.text.secondary,
   },
   pos: {

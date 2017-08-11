@@ -104,6 +104,9 @@ const toolbarStyleSheet = createStyleSheet(theme => ({
   title: {
     flex: '0 0 auto',
   },
+  titleText: {
+    color: theme.palette.text.secondary,
+  },
 }));
 
 let EnhancedTableToolbar = props => {
@@ -120,7 +123,7 @@ let EnhancedTableToolbar = props => {
           ? <Typography type="subheading">
               {numSelected} selected
             </Typography>
-          : <Typography type="title">Nutrition</Typography>}
+          : <Typography type="title" className={classes.titleText}>Nutrition</Typography>}
       </div>
       <div className={classes.spacer} />
       <div className={classes.actions}>
