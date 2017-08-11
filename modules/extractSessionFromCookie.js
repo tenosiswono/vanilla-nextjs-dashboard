@@ -25,7 +25,7 @@ const extractSessionFromCookie = req => {
         let session
         try {
           //session = jwt.verify(token, authenticationSecretKey)
-          return token
+          return { token }
         } catch (error) {
           console.error(error)
         }

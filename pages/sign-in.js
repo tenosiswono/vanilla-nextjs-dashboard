@@ -15,6 +15,7 @@ import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
 import Link from 'next/link';
 import Router from 'next/router';
+import loginPage from '../components/loginPage';
 
 
 const styleSheet = createStyleSheet('Module', theme => ({
@@ -109,4 +110,4 @@ class Module extends Component {
 Module.propTypes = {
   classes: PropTypes.object.isRequired,
 }
-export default layout(withStyles(styleSheet)(Module));
+export default loginPage(layout(withStyles(styleSheet)(Module)));

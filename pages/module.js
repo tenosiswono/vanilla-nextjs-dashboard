@@ -11,6 +11,7 @@ import { withStyles, createStyleSheet } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button';
+import securePage from '../components/securePage';
 
 import TableExample from '../components/table';
 
@@ -75,4 +76,4 @@ class Module extends Component {
 Module.propTypes = {
   classes: PropTypes.object.isRequired,
 }
-export default layout(withStyles(styleSheet)(Module));
+export default securePage(layout(withStyles(styleSheet)(Module)));

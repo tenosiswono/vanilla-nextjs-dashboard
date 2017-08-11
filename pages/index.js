@@ -16,6 +16,7 @@ import PieChart from '../components/pie';
 import LineChart from '../components/line';
 import BarChart from '../components/bar';
 import TableExample from '../components/table';
+import securePage from '../components/securePage';
 
 const styleSheet = createStyleSheet('Index', theme => ({
   root: {
@@ -101,4 +102,5 @@ class Index extends Component {
 Index.propTypes = {
   classes: PropTypes.object.isRequired,
 }
-export default layout(withStyles(styleSheet)(Index));
+
+export default securePage(layout(withStyles(styleSheet)(Index)));

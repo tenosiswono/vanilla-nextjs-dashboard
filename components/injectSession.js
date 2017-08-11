@@ -34,7 +34,6 @@ const injectSession = Page => {
     
     constructor (props) {
       super(props)
-      console.log(props);
       // As the session changes we need a spot to store in a way that updates
       // children components
       this.state = {}

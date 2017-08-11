@@ -12,7 +12,7 @@ const handle = app.getRequestHandler();
 // This is where we cache our rendered HTML pages
 const ssrCache = new LRUCache({
   max: 100,
-  maxAge: 1000 * 60 * 60, // 1hour
+  maxAge: 60, // 1hour
 });
 
 app.prepare()
@@ -21,13 +21,19 @@ app.prepare()
 
   // Use the `renderAndCache` utility defined below to serve pages
   server.get('/', (req, res) => {
+    req.session = extractSessionFromCookie(req);
     renderAndCache(req, res, '/');
+  });
+
+  server.get('/module', (req, res) => {
+    req.session = extractSessionFromCookie(req);
+    renderAndCache(req, res, '/module');
   });
   
   server.get('/sign-in', (req, res) => {
+    req.session = extractSessionFromCookie(req);
     const actualPage = '/sign-in';
     const queryParams = { next: req.query.next };
-    console.log(queryParams);
     renderAndCache(req, res, actualPage, queryParams);
   });
 
