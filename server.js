@@ -47,9 +47,9 @@ app.prepare()
 
   server.get('*', (req, res) => handle(req, res));
   /* eslint-disable no-console */
-  server.listen(3000, (err) => {
+  server.listen(process.env.PORT || 3000, (err) => {
     if (err) throw err;
-    console.log('> Ready asa on http://localhost:3000');
+    console.log('> Ready asa on http://localhost:' + process.env.PORT || 3000);
   });
 })
 .catch((ex) => {
