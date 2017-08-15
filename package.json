@@ -92,9 +92,19 @@
     }
   },
   "dependencies": {
+    "babel-eslint": "7.1.1",
+    "babel-plugin-styled-components": "^1.1.5",
     "chart.js": "^2.6.0",
     "es6-promise": "4.1.1",
+    "eslint": "3.11.1",
+    "eslint-config-airbnb": "13.0.0",
+    "eslint-config-airbnb-base": "10.0.1",
+    "eslint-plugin-import": "2.2.0",
+    "eslint-plugin-jsx-a11y": "2.2.3",
+    "eslint-plugin-react": "6.7.1",
+    "eslint-plugin-redux-saga": "0.1.5",
     "express": "4.15.3",
+    "formsy-react": "^0.19.5",
     "isomorphic-fetch": "2.2.1",
     "js-cookie": "^2.1.4",
     "jsonwebtoken": "^7.4.2",
@@ -113,21 +123,11 @@
     "react-redux": "5.0.5",
     "react-share": "1.15.0",
     "redux": "3.7.2",
+    "redux-devtools-extension": "2.13.2",
     "redux-saga": "0.15.4",
     "reselect": "^3.0.1",
     "styled-components": "^2.0.0-17",
-    "sw-precache-webpack-plugin": "^0.11.3",
-    "babel-eslint": "7.1.1",
-    "babel-plugin-styled-components": "^1.1.5",
-    "eslint": "3.11.1",
-    "eslint-config-airbnb": "13.0.0",
-    "eslint-config-airbnb-base": "10.0.1",
-    "eslint-plugin-import": "2.2.0",
-    "eslint-plugin-jsx-a11y": "2.2.3",
-    "eslint-plugin-react": "6.7.1",
-    "eslint-plugin-redux-saga": "0.1.5",
-    "redux-devtools-extension": "2.13.2"
+    "sw-precache-webpack-plugin": "^0.11.3"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
