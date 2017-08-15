@@ -61,12 +61,6 @@ const FormsyText = React.createClass({
     return props.validationColor || '#4CAF50';
   },
 
-  handleBlur(event) {
-    this.setValue(event.currentTarget.value);
-    delete this.changeValue;
-    if (this.props.onBlur) this.props.onBlur(event);
-  },
-
   handleChange(event) {
     // Update the value (and so display any error) after a timeout.
     if (this.props.updateImmediately) {

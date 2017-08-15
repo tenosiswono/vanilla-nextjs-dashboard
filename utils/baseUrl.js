@@ -1,3 +1,3 @@
-const BASE_URL = 'https://blog.xcidic.com';
+const BASE_URL = 'https://vanilla-express.herokuapp.com';
 
 export default BASE_URL;

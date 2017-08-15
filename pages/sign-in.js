@@ -18,6 +18,8 @@ import Router from 'next/router';
 import loginPage from '../components/loginPage';
 import FormsyText from '../components/FormsyWrapper/FromsyText';
 import Formsy from 'formsy-react';
+import { withReduxSaga } from '../store';
+import { loadLogin } from '../actions';
 
 
 const styleSheet = createStyleSheet('Module', theme => ({
@@ -80,11 +82,12 @@ class Module extends Component {
   };
 
   submitLogin = () => {
-    const session = { token: "session" };
-    // Store the token for the benefit of client and server
-    window.localStorage.setItem('session', JSON.stringify(session));
-    Cookie.set('token', session.token, { secure: false });
-    Router.push(this.props.next || '/');
+    this.props.dispatch(loadLogin(this.state.email, this.state.password, this.props.next));
+    // const session = { token: "session" };
+    // // Store the token for the benefit of client and server
+    // window.localStorage.setItem('session', JSON.stringify(session));
+    // Cookie.set('token', session.token, { secure: false });
+    // Router.push(this.props.next || '/');
   }
 
   render() {
@@ -142,4 +145,4 @@ class Module extends Component {
 Module.propTypes = {
   classes: PropTypes.object.isRequired,
 }
-export default loginPage(layout(withStyles(styleSheet)(Module)));
+export default withReduxSaga(loginPage(layout(withStyles(styleSheet)(Module))));
