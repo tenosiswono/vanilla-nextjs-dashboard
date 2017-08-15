@@ -101,7 +101,7 @@
     "lru-cache": "^4.1.1",
     "material-ui": "next",
     "material-ui-icons": "1.0.0-alpha.19",
-    "next": "2.4.9",
+    "next": "latest",
     "next-redux-saga": "1.0.1",
     "next-redux-wrapper": "1.2.0",
     "prop-types": "15.5.10",

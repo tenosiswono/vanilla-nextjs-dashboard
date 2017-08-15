@@ -16,6 +16,8 @@ import TextField from 'material-ui/TextField';
 import Link from 'next/link';
 import Router from 'next/router';
 import loginPage from '../components/loginPage';
+import FormsyText from '../components/FormsyWrapper/FromsyText';
+import Formsy from 'formsy-react';
 
 
 const styleSheet = createStyleSheet('Module', theme => ({
@@ -59,7 +61,23 @@ class Module extends Component {
   
   constructor(props) {
     super(props);
+    this.state = {
+      email: '',
+      password: '',
+    };
   }
+
+  handleChangeEmail = event => {
+    this.setState({
+      email: event.target.value,
+    });
+  };
+
+  handleChangePassword = event => {
+    this.setState({
+      password: event.target.value,
+    });
+  };
 
   submitLogin = () => {
     const session = { token: "session" };
@@ -83,23 +101,37 @@ class Module extends Component {
             <Typography type="title" className={classes.title}>
               Sign in
             </Typography>
-            <TextField
-              id="email"
-              label="Email"
-              InputProps={{ placeholder: '' }}
-              fullWidth
-              margin="normal"
-            />
-            <TextField
-              id="password"
-              label="Password"
-              fullWidth
-              type="password"
-              margin="normal"
-            />
-            <Button color="primary" raised className={classes.button} onClick={this.submitLogin}>
-              Sign-in
-            </Button>
+            <Formsy.Form
+              onValidSubmit={this.submitLogin}
+            >
+              <FormsyText
+                label="E-mail"
+                style={{ width: '100%' }}
+                type="email"
+                name="email"
+                id="email"
+                requiredError="E-mail is required"
+                required
+                validations="isEmail"
+                validationError="Not a valid E-mail"
+                value={this.state.email}
+                onChange={this.handleChangeEmail}
+              /> <br />
+              <FormsyText
+                label="Password"
+                type="password"
+                style={{ width: '100%' }}
+                name="password"
+                id="password"
+                requiredError="Password is required"
+                required
+                value={this.state.password}
+                onChange={this.handleChangePassword}
+              /><br />
+              <Button color="primary" raised className={classes.button} type="submit">
+                Sign-in
+              </Button>
+            </Formsy.Form>
           </CardContent>
         </Card>
       </div>
