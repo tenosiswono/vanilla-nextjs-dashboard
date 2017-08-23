@@ -21,24 +21,24 @@ app.prepare()
 
   // Use the `renderAndCache` utility defined below to serve pages
   server.get('/', (req, res) => {
-    req.session = extractSessionFromCookie(req);
+    req.session = extractSessionFromCookie(req, res);
     renderAndCache(req, res, '/');
   });
 
   server.get('/module', (req, res) => {
-    req.session = extractSessionFromCookie(req);
+    req.session = extractSessionFromCookie(req, res);
     renderAndCache(req, res, '/module');
   });
   
   server.get('/sign-in', (req, res) => {
-    req.session = extractSessionFromCookie(req);
+    req.session = extractSessionFromCookie(req, res);
     const actualPage = '/sign-in';
     const queryParams = { next: req.query.next };
     renderAndCache(req, res, actualPage, queryParams);
   });
 
   server.get('/secured', (req, res) => {
-    req.session = extractSessionFromCookie(req);
+    req.session = extractSessionFromCookie(req, res);
     const actualPage = '/secured';
     const queryParams = { next: req.query.next };
     renderAndCache(req, res, actualPage, queryParams);

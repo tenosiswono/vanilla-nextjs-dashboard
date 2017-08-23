@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken')
 
-const authenticationSecretKey = 'test';
+const authenticationSecretKey = process.env.JWT_SECRET || 'vanilla-dev';
 
-const extractSessionFromCookie = req => {
+const extractSessionFromCookie = (req, res) => {
   const { cookie } = req.headers
 
   // Skip if there's no cookie
@@ -24,15 +24,15 @@ const extractSessionFromCookie = req => {
         // Decode the token and return it
         let session
         try {
-          //session = jwt.verify(token, authenticationSecretKey)
-          return { token }
+          session = jwt.verify(token, authenticationSecretKey)
+          return { token, session }
         } catch (error) {
+          res.redirect('/sign-out');
           console.error(error)
         }
       }
     }
   }
-
   return null
 }
 
