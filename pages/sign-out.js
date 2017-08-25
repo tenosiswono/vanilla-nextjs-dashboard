@@ -5,7 +5,7 @@ import Frame from '../components/frame';
 import layout from '../components/layout';
 
 class SignOut extends React.Component {
-  componentDidMount () {
+  componentDidMount() {
     if (process.browser) {
       window.localStorage.removeItem('session');
       Cookie.remove('token');
@@ -13,12 +13,11 @@ class SignOut extends React.Component {
     Router.push('/sign-in');
   }
 
-  render () {
+  render() {
     return (
-        <Frame title="Sign out" description="You will be redirected to login page">
-        </Frame>
-    )
+        <Frame title="Sign out" description="You will be redirected to login page" />
+    );
   }
 }
 
-export default layout(SignOut)
+export default layout(SignOut);

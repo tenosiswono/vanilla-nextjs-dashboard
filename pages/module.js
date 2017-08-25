@@ -4,18 +4,16 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 import Grid from 'material-ui/Grid';
 
+import { withStyles, createStyleSheet } from 'material-ui/styles';
+import Typography from 'material-ui/Typography';
+import Card, { CardContent } from 'material-ui/Card';
+
+import securePage from '../components/securePage';
+import TableExample from '../components/table';
 import layout from '../components/layout';
 import Frame from '../components/frame';
 
-import { withStyles, createStyleSheet } from 'material-ui/styles';
-import Typography from 'material-ui/Typography';
-import Card, { CardActions, CardContent } from 'material-ui/Card';
-import Button from 'material-ui/Button';
-import securePage from '../components/securePage';
-
-import TableExample from '../components/table';
-
-const styleSheet = createStyleSheet('Module', theme => ({
+const styleSheet = createStyleSheet('Module', (theme) => ({
   root: {
     marginTop: 0,
     width: '100%',
@@ -75,5 +73,6 @@ class Module extends Component {
 
 Module.propTypes = {
   classes: PropTypes.object.isRequired,
-}
+};
+
 export default securePage(layout(withStyles(styleSheet)(Module)));

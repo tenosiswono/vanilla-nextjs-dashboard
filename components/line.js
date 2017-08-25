@@ -23,9 +23,9 @@ const data = {
       pointHoverBorderWidth: 2,
       pointRadius: 1,
       pointHitRadius: 10,
-      data: [65, 59, 80, 81, 56, 55, 40]
-    }
-  ]
+      data: [65, 59, 80, 81, 56, 55, 40],
+    },
+  ],
 };
 
 export default React.createClass({
@@ -37,5 +37,5 @@ export default React.createClass({
         <Line data={data} />
       </div>
     );
-  }
+  },
 });

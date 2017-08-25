@@ -17,7 +17,6 @@ export default class MyDocument extends Document {
   }
 
   render() {
-    const context = getContext();
     const sheet = new ServerStyleSheet();
     const main = sheet.collectStyles(<Main />);
     const styleTags = sheet.getStyleElement();

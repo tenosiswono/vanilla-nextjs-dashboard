@@ -39,17 +39,11 @@ AppWrapper = withStyles(styleSheet)(AppWrapper);
 
 function layout(BaseComponent) {
   class Layout extends Component {
-    
-    static getInitialProps (context) {
+    static getInitialProps(context) {
       // If the page has a prop fetcher invoke it
-      return BaseComponent.getInitialProps ? BaseComponent.getInitialProps(context) : {}
+      return BaseComponent.getInitialProps ? BaseComponent.getInitialProps(context) : {};
     }
 
-    constructor (props) {
-      super(props)
-      console.log(props);
-    }
-    
     componentDidMount() {
       // Remove the server-side injected CSS.
       const jssStyles = document.querySelector('#jss-server-side');

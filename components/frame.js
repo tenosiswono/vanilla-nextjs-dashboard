@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import Link from 'next/link';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Grid from 'material-ui/Grid';
 import Hidden from 'material-ui/Hidden';
-import Icon from 'material-ui/Icon';
 import KeyboardArrowDown from 'material-ui-icons/KeyboardArrowDown';
 import KeyboardArrowUp from 'material-ui-icons/KeyboardArrowUp';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 import NotificationsIcon from 'material-ui-icons/Notifications';
-import Button from 'material-ui/Button';
 import Drawer from 'material-ui/Drawer';
 import { ListItem, ListItemText, ListItemSecondaryAction } from 'material-ui/List';
-import FlatButton from '../components/flatButton';
 import withWidth, { isWidthUp } from 'material-ui/utils/withWidth';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import compose from 'recompose/compose';
@@ -24,14 +20,14 @@ import Divider from 'material-ui/Divider';
 import Typography from 'material-ui/Typography';
 import Collapse from 'material-ui/transitions/Collapse';
 import Badge from 'material-ui/Badge';
-import SearchField from '../components/searchField';
-import Menu, { MenuItem } from 'material-ui/Menu';
+import Menu from 'material-ui/Menu';
 import SearchIcon from 'material-ui-icons/Search';
 import ArrowBackIcon from 'material-ui-icons/ArrowBack';
 import Dialog from 'material-ui/Dialog';
 import Fade from 'material-ui/transitions/Fade';
+import SearchField from '../components/searchField';
 
-const styleSheet = createStyleSheet('Frame', theme => ({
+const styleSheet = createStyleSheet('Frame', (theme) => ({
   root: {
     minHeight: '100vh',
     width: '100%',
@@ -155,7 +151,7 @@ class Frame extends Component {
     this.setState({ notificationOpen: false });
   }
 
-  handleNotificationOpen = event => {
+  handleNotificationOpen = (event) => {
     this.setState({ notificationOpen: true, anchorEl: event.currentTarget });
   }
 
@@ -171,10 +167,10 @@ class Frame extends Component {
     const { children, width, title, description } = this.props;
     const classes = this.props.classes;
 
-    let drawerDocked = isWidthUp('md', width);
+    const drawerDocked = isWidthUp('md', width);
     let appBarClassName = classes.appBar;
-    let drawerClassName =  classes.navHidden;
-    let childrenClassName =  classes.children;
+    let drawerClassName = classes.navHidden;
+    let childrenClassName = classes.children;
 
     if (this.state.open) {
       appBarClassName += ` ${classes.appBarShift}`;

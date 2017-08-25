@@ -29,7 +29,7 @@ app.prepare()
     req.session = extractSessionFromCookie(req, res);
     renderAndCache(req, res, '/module');
   });
-  
+
   server.get('/sign-in', (req, res) => {
     req.session = extractSessionFromCookie(req, res);
     const actualPage = '/sign-in';

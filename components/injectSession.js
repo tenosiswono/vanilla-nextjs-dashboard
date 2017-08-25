@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 /*
  * Dredges up a `session` object from cookie or localStorage and, if present,
@@ -10,67 +10,67 @@ import React from 'react'
 // Pull the session out of local storage and parse it muffling any errors
 const getSessionFromLocalStorage = () => {
   try {
-    return JSON.parse(window.localStorage.getItem('session'))
+    return JSON.parse(window.localStorage.getItem('session'));
   } catch (error) {
-    console.error(error)
+    return null;
   }
-}
+};
 
-const injectSession = Page => {
+const injectSession = (Page) => {
   return class InjectSession extends React.Component {
-    static getInitialProps (context) {
+    static getInitialProps(context) {
       // Get the page's own initial props
-      const initialProps = Page.getInitialProps ? Page.getInitialProps(context) : {}
+      const initialProps = Page.getInitialProps ? Page.getInitialProps(context) : {};
 
       // Dig the session out of localstorage (on client) or the request (on
       // server)
       const session = process.browser
         ? getSessionFromLocalStorage()
-        : context.req.session
+        : context.req.session;
 
       // Inject any initial props and session
-      return { ...initialProps, session }
+      return { ...initialProps, session };
     }
-    
-    constructor (props) {
-      super(props)
+
+    constructor(props) {
+      super(props);
       // As the session changes we need a spot to store in a way that updates
       // children components
-      this.state = {}
+      this.state = {};
     }
 
-    render () {
+    render() {
       // Pass on whatever props exist and state
-      return <Page {...this.props} {...this.state} />
+      return <Page {...this.props} {...this.state} />;
     }
 
-    componentWillMount () {
+    componentWillMount() {
       // Use component state to track the session
       if (process.browser) {
-        window.addEventListener('storage', this.handleStorageChange)
+        window.addEventListener('storage', this.handleStorageChange);
       }
     }
 
-    componentWillUnmount () {
+    componentWillUnmount() {
       // Stop tracking session
       if (process.browser) {
-        window.removeEventListener('storage', this.handleStorageChange)
+        window.removeEventListener('storage', this.handleStorageChange);
       }
     }
 
-    handleStorageChange = event => {
+    handleStorageChange = (event) => {
       // Keep component state up to date with current session as it changes.
       // This is so other tabs open in the same browser can respond to session
       // changes.
       if (event.key === 'session') {
         if (event.newValue) {
-          this.setState({ session: JSON.parse(event.newValue) })
+          this.setState({ session: JSON.parse(event.newValue) });
         } else {
-          this.setState({ session: null })
+          this.setState({ session: null });
         }
       }
     }
-  }
-}
+  };
+};
 
-export default injectSession
+export default injectSession;

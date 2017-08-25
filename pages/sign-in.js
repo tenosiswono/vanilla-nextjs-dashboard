@@ -1,28 +1,22 @@
 import { Component } from 'react';
 import Head from 'next/head';
-import Cookie from 'js-cookie';
 
 import PropTypes from 'prop-types';
-import Grid from 'material-ui/Grid';
 
-import layout from '../components/layout';
-import Frame from '../components/frame';
 
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
-import Card, { CardActions, CardContent } from 'material-ui/Card';
+import Card, { CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button';
-import TextField from 'material-ui/TextField';
-import Link from 'next/link';
-import Router from 'next/router';
+import Formsy from 'formsy-react';
 import loginPage from '../components/loginPage';
 import FormsyText from '../components/FormsyWrapper/FromsyText';
-import Formsy from 'formsy-react';
 import { withReduxSaga } from '../store';
 import { loadLogin } from '../actions';
+import layout from '../components/layout';
 
 
-const styleSheet = createStyleSheet('Module', theme => ({
+const styleSheet = createStyleSheet('Module', (theme) => ({
   root: {
     marginTop: 0,
     width: '100%',
@@ -55,12 +49,12 @@ const styleSheet = createStyleSheet('Module', theme => ({
 
 /* eslint-disable react/react-in-jsx-scope */
 class Module extends Component {
-  static getInitialProps ({ query }) {
+  static getInitialProps({ query }) {
     return query
       ? { next: query.next }
-      : { next: '/' }
+      : { next: '/' };
   }
-  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -69,13 +63,13 @@ class Module extends Component {
     };
   }
 
-  handleChangeEmail = event => {
+  handleChangeEmail = (event) => {
     this.setState({
       email: event.target.value,
     });
   };
 
-  handleChangePassword = event => {
+  handleChangePassword = (event) => {
     this.setState({
       password: event.target.value,
     });
@@ -83,12 +77,7 @@ class Module extends Component {
 
   submitLogin = () => {
     this.props.dispatch(loadLogin(this.state.email, this.state.password, this.props.next));
-    // const session = { token: "session" };
-    // // Store the token for the benefit of client and server
-    // window.localStorage.setItem('session', JSON.stringify(session));
-    // Cookie.set('token', session.token, { secure: false });
-    // Router.push(this.props.next || '/');
-  }
+  };
 
   render() {
     const classes = this.props.classes;
@@ -144,5 +133,6 @@ class Module extends Component {
 
 Module.propTypes = {
   classes: PropTypes.object.isRequired,
-}
+};
+
 export default withReduxSaga(loginPage(layout(withStyles(styleSheet)(Module))));

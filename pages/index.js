@@ -4,13 +4,9 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 import Grid from 'material-ui/Grid';
 
-import layout from '../components/layout';
-import Frame from '../components/frame';
-
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
-import Card, { CardActions, CardContent } from 'material-ui/Card';
-import Button from 'material-ui/Button';
+import Card, { CardContent } from 'material-ui/Card';
 
 import PieChart from '../components/pie';
 import LineChart from '../components/line';
@@ -18,7 +14,10 @@ import BarChart from '../components/bar';
 import TableExample from '../components/table';
 import securePage from '../components/securePage';
 
-const styleSheet = createStyleSheet('Index', theme => ({
+import layout from '../components/layout';
+import Frame from '../components/frame';
+
+const styleSheet = createStyleSheet('Index', (theme) => ({
   root: {
     marginTop: 0,
     width: '100%',

@@ -1,11 +1,11 @@
 const compose = (...fns) => (...args) => {
-  fns.reverse().forEach(fn => {
+  fns.reverse().forEach((fn) => {
     if (!Array.isArray(args)) {
-      args = [args]
+      args = [args];
     }
-    args = fn.apply(null, args)
+    args = fn.apply(null, args);
   })
-  return args
+  return args;
 }
 
-module.exports = compose
+module.exports = compose;

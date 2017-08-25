@@ -8,43 +8,43 @@ import Router from 'next/router';
  * successful authentication.
  */
 
-const ensureSignedIn = Page => {
+const ensureSignedIn = (Page) => {
   return class EnsureSignedIn extends React.Component {
-    static getInitialProps (context) {
+    static getInitialProps(context) {
       // If the page has a prop fetcher invoke it
-      return Page.getInitialProps ? Page.getInitialProps(context) : {}
+      return Page.getInitialProps ? Page.getInitialProps(context) : {};
     }
 
-    constructor (props) {
-      super(props)
-      console.log(props.session)
+    constructor(props) {
+      super(props);
+      console.log(props.session);
       // On the client redirect right away to the sign in page if there's no
       // session
       if (process.browser && props.session) {
-        Router.push('/')
+        Router.push('/');
       }
     }
 
-    componentWillReceiveProps (nextProps) {
+    componentWillReceiveProps(nextProps) {
       // On the client redirect to the sign in page if the session gets signed
       // out in another tab
       if (process.browser && nextProps.session) {
-        Router.push('/')
+        Router.push('/');
       }
     }
 
-    render () {
+    render() {
       if (this.props.session) {
-        return null
+        return null;
       } else {
         return (
           <div>
             <Page {...this.props} />
           </div>
-        )
+        );
       }
     }
-  }
-}
+  };
+};
 
-export default ensureSignedIn
+export default ensureSignedIn;
