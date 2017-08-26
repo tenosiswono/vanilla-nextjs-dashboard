@@ -21,3 +21,13 @@ export const selectLoginData = () => createSelector(
   selectState(),
   (subState) => subState.loginData
 );
+
+export const selectListArticle = () => createSelector(
+  selectState(),
+  (subState) => subState.articles
+);
+
+export const selectArticle = () => createSelector(
+  selectState(),
+  (subState) => subState.article
+);

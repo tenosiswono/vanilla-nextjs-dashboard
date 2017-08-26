@@ -9,11 +9,14 @@ import Typography from 'material-ui/Typography';
 import Card, { CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Formsy from 'formsy-react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import loginPage from '../components/loginPage';
 import FormsyText from '../components/FormsyWrapper/FromsyText';
 import { withReduxSaga } from '../store';
 import { loadLogin } from '../actions';
 import layout from '../components/layout';
+import { selectError } from '../selectors';
 
 
 const styleSheet = createStyleSheet('Module', (theme) => ({
@@ -38,6 +41,9 @@ const styleSheet = createStyleSheet('Module', (theme) => ({
       margin: '30vh 5vw 0 5vw',
       padding: '32px',
     },
+  },
+  error: {
+    color: '#D32F2F',
   },
   [theme.breakpoints.down('xs')]: {
     card: {
@@ -93,6 +99,9 @@ class Module extends Component {
             <Typography type="title" className={classes.title}>
               Sign in
             </Typography>
+            <Typography type="caption" gutterBottom align="center" className={classes.error}>
+              {this.props.error}
+            </Typography>
             <Formsy.Form
               onValidSubmit={this.submitLogin}
             >
@@ -131,8 +140,16 @@ class Module extends Component {
   }
 }
 
+const mapStateToProps = createStructuredSelector({
+  error: selectError(),
+});
+
 Module.propTypes = {
   classes: PropTypes.object.isRequired,
+  error: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+  ]),
 };
 
-export default withReduxSaga(loginPage(layout(withStyles(styleSheet)(Module))));
+export default withReduxSaga(connect(mapStateToProps)(loginPage(layout(withStyles(styleSheet)(Module)))));

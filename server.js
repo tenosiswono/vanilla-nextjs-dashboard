@@ -37,6 +37,32 @@ app.prepare()
     renderAndCache(req, res, actualPage, queryParams);
   });
 
+  server.get('/articles', (req, res) => {
+    req.session = extractSessionFromCookie(req, res);
+    const actualPage = '/articles';
+    renderAndCache(req, res, actualPage);
+  });
+
+  server.get('/articles/create', (req, res) => {
+    req.session = extractSessionFromCookie(req, res);
+    const actualPage = '/articles/create';
+    renderAndCache(req, res, actualPage);
+  });
+
+  server.get('/articles/view/:id', (req, res) => {
+    req.session = extractSessionFromCookie(req);
+    const queryParams = { id: req.params.id };
+    const actualPage = '/articles/view';
+    renderAndCache(req, res, actualPage, queryParams);
+  });
+
+  server.get('/articles/edit/:id', (req, res) => {
+    req.session = extractSessionFromCookie(req);
+    const queryParams = { id: req.params.id };
+    const actualPage = '/articles/edit';
+    renderAndCache(req, res, actualPage, queryParams);
+  });
+
   server.get('/secured', (req, res) => {
     req.session = extractSessionFromCookie(req, res);
     const actualPage = '/secured';

@@ -6,7 +6,7 @@
     "dev": "node server.js",
     "build": "next build",
     "prestart": "next build",
-    "start": "NODE_ENV=production node server.js",
+    "start": "node server.js",
     "heroku-postbuild": "next build"
   },
   "eslintConfig": {

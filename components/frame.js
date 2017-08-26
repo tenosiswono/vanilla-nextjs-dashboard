@@ -227,6 +227,13 @@ class Frame extends Component {
             </ListItem>
           </Link>
         </div>
+        <div onClick={this.toggleClick}>
+          <Link href="/articles">
+            <ListItem button>
+              <ListItemText primary="Articles" />
+            </ListItem>
+          </Link>
+        </div>
       </div>
     );
 
